@@ -1,2 +1,2 @@
-# cordova-plugin-qrcode-aztec
+# cordova-plugin-aztec-qrcode
 Generate QRCode using Aztec format
