@@ -6,7 +6,7 @@ Generate QRCode using Aztec format
 
 **Prerequisites**
 > The **cordova-plugin-add-swift-support** allow to develop cordova plugin using swift. It provides a way to configure IOS toolchains to support swift 3.0
-```
+>```
 cordova plugin add cordova-plugin-add-swift-support --save
 ```
 
