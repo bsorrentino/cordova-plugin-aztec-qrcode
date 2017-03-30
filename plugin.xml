@@ -15,5 +15,7 @@
         <source-file src="src/ios/PKBarcodeFormatAztec.m"/>
         -->
         <source-file src="src/ios/PKBarcodeFormatAztec.swift"/>
+        <dependency id="cordova-plugin-add-swift-support" version="1.6.2"/>
     </platform>
+
 </plugin>
