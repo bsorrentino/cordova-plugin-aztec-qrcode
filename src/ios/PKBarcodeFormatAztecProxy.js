@@ -1,14 +1,15 @@
 var exec = require('cordova/exec');
 
-module.exports = function(element, message, success, error) {
+module.exports = function(container, message, success, error) {
 
+    /*
     var container = document.getElementById(element);
 
     if( !container ) {
         error( "PKBarcodeFormatAztec :: element " +  element + " not found!");
         return;
     }
-
+    */
     var ios_success = function( result ) {
 
         var img = document.createElement("img");

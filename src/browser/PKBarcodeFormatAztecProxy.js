@@ -26865,14 +26865,22 @@ if (typeof module === 'object' && module.exports) {
 
 var browser = require('cordova/platform');
 
-module.exports = function(element, message, success, error)  {
+module.exports = function(container, message, success, error)  {
 
-    var container = document.getElementById(element);
+    /*
+    var container = element instanceof window.HTMLElement
+					? element : document.getElementById(element);
 
     if( !container ) {
         error( "PKBarcodeFormatAztec :: element " +  element + " not found!");
         return;
     }
+ 
+    // Remove childrens
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    */
     
     setTimeout( function() {
 
