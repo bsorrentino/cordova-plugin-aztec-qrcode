@@ -1,0 +1,110 @@
+<html>
+    <head>
+
+        <script type="text/javascript" src="./node_modules/bwip-js/freetype.js"></script>
+        <script type="text/javascript" src="./node_modules/bwip-js/bwipp.js"></script>
+        <script type="text/javascript" src="./node_modules/bwip-js/bwipjs.js"></script>
+        <script type="text/javascript" src="./node_modules/bwip-js/lib/bitmap.js"></script>
+        <script type="text/javascript" src="./node_modules/bwip-js/lib/symdesc.js"></script>
+        <script type="text/javascript" src="./node_modules/bwip-js/lib/canvas-toblob.js"></script>
+        <script type="text/javascript" src="./node_modules/bwip-js/lib/filesaver.js"></script>
+
+    </head>
+    <body>
+        <canvas id="canvas" width=1 height=1 style="border:1px solid #fff;visibility:hidden"></canvas>
+
+        <div style="width:1in;height:1in;background-color:red">TEST</div>
+
+        <script type="text/javascript">
+        
+function getDPI() {
+    var div = document.createElement( "div");
+    div.style.height = "1in";
+    div.style.width = "1in";
+    div.style.top = "-100%";
+    div.style.left = "-100%";
+    div.style.position = "absolute";
+
+    document.body.appendChild(div);
+
+    var result =  div.offsetHeight;
+
+    document.body.removeChild( div );
+
+    return result;
+
+}
+
+var DPI = getDPI();
+
+console.log( "DPI", DPI );
+
+function px2in( px ) {
+    var inch =  px / DPI;
+    console.log( "inch", inch, "floor", Math.floor(inch))
+    return inch ;
+}
+
+var sz = px2in(5*DPI);
+
+// Initialize a barcode writer object.  This is the interface between
+// the low-level BWIPP code, freetype, and the Bitmap object.
+// The `freetype` parameter is the Emscripten `Module` object.
+// The boolean `monochrome` flag switches freetype between
+// anti-aliased (false) and monochrome (true) font rendering.
+var bw = new BWIPJS(Module, false /*use anti-aliased fonts*/);
+
+// Add a bitmap instance
+bw.bitmap(new Bitmap());
+
+// Set the x,y scaling factors
+bw.scale(1, 1);
+
+// Create an options object.  See the bwipjs and BWIPP documentation
+// for possible values.
+// You can use any plain JavaScript values.  Numbers, bools and strings.
+var opts = {
+	parsefnc:true,
+	includetext:false,
+	alttext:"(00)1234567890",
+    width:sz,
+    height:sz
+};
+
+// Call into the BWIPP cross-compiled code.   BWIPP() is a factory
+// method that returns a function object.  You can call the
+// function object multiple times (and reuse the BWIPJS object as
+// well), but you will likely need to create a new Bitmap object
+// prior to each call.
+try {
+	BWIPP()(bw, 'azteccode', "^FNC1001234567890", opts);
+} catch (e) {
+	// handle error
+}
+
+var canvas = document.getElementById("canvas");
+
+// Render the barcode.  This is your function so change as necessary.
+// bw.bitmap() returns the Bitmap instance created above.
+//bw.bitmap().render();
+var rot = "N";
+bw.bitmap().pad( 0, 0 );
+bw.bitmap().show( canvas, rot );
+
+canvas.toBlob( function(blob) {
+
+    
+    var image = document.createElement('img');
+    //image.style.width = "300px";
+    //image.style.height = "300px";
+    
+    //image.src = 'data:image/png;base64,'+ blob.toString() ;
+    image.src = URL.createObjectURL(blob);
+    document.body.appendChild(image);
+
+}, "image/png")
+        </script>
+    
+    
+    </body>
+</html>
