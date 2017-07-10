@@ -26866,7 +26866,7 @@ if (typeof module === 'object' && module.exports) {
 var browser = require('cordova/platform');
 
 var script = document.createElement('script');
-script.src = "/js/freetype.js";
+script.src = "js/freetype.js";
 script.onload = function () {
     console.log( "Module 'freetype.js' Loaded!" );
 };
