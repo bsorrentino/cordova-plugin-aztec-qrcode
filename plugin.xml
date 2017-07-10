@@ -35,7 +35,7 @@
         <js-module src="src/browser/freetype.js" name="freetype">
         </js-module>
 
-        <asset src="./node_modules/bwip-js/freetype.js" target="js/freetype.js"/>
+        <asset src="./src/browser/freetype.js" target="js/freetype.js"/>
         <!--
         <js-module src="./node_modules/bwip-js/freetype.js"></js-module>
         <js-module src="./node_modules/bwip-js/bwipp.js"></js-module>
