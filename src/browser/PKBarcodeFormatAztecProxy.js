@@ -26865,6 +26865,13 @@ if (typeof module === 'object' && module.exports) {
 
 var browser = require('cordova/platform');
 
+var script = document.createElement('script');
+script.src = "/js/freetype.js";
+script.onload = function () {
+    console.log( "Module 'freetype.js' Loaded!" );
+};
+document.head.appendChild(script);
+
 module.exports = function(container, message, success, error)  {
 
     /*
@@ -26881,8 +26888,9 @@ module.exports = function(container, message, success, error)  {
         container.removeChild(container.firstChild);
     }
     */
-    
-    setTimeout( function() {
+
+
+    var showQRCode =  function() {
 
         var bw = new BWIPJS(Module, false /*use anti-aliased fonts*/);
 
@@ -26933,7 +26941,11 @@ module.exports = function(container, message, success, error)  {
 
         success( canvas );
 
-    }, 0 );
+    };
+
+    setTimeout( showQRCode, 0 );
+
+
 }
 
 //require("cordova/exec/proxy").add("PKBarcodeFormatAztec", module.exports);
