@@ -4,9 +4,9 @@ Generate QRCode using Aztec format
 
 ## Supported platforms
 * **IOS**
-> Native implementation using [Core Image Filter `CIAztecCodeGenerator`](https://developer.apple.com/library/content/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAztecCodeGenerator))
+ > Native implementation using [Core Image Filter `CIAztecCodeGenerator`](https://developer.apple.com/library/content/documentation/GraphicsImaging/Reference/CoreImageFilterReference/index.html#//apple_ref/doc/filter/ci/CIAztecCodeGenerator))
 * **Browser**
-> Implementation based on [bwip-js](https://www.npmjs.com/package/bwip-js))
+ > Implementation based on [bwip-js](https://www.npmjs.com/package/bwip-js)
 
 
 ## Add Plugin
@@ -59,8 +59,6 @@ generate() {
      this.qrCode.nativeElement,
      "message to encode",
      (element) => {
-       //console.log("qrBase64=", e);
-       //this.qrImg = "data:image/png;base64," + e;
        console.log( "QRCODE showed on", element);
      },
      (err) => {
