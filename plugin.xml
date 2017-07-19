@@ -1,20 +1,51 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="PKBarcodeFormatAztec" version="0.0.1"
+<plugin id="PKBarcodeFormatAztec" version="0.0.2"
         xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
     <name>PKBarcodeFormatAztec</name>
     <js-module name="PKBarcodeFormatAztec" src="www/PKBarcodeFormatAztec.js">
       <clobbers target="PKBarcodeFormatAztec"/>
     </js-module>
+
+    <!-- ios -->
     <platform name="ios">
         <config-file parent="/*" target="config.xml">
             <feature name="PKBarcodeFormatAztec">
               <param name="ios-package" value="PKBarcodeFormatAztec"/></feature>
         </config-file>
-        <!--
-        <source-file src="src/ios/PKBarcodeFormatAztec.m"/>
-        -->
+        <!--source-file src="src/ios/PKBarcodeFormatAztec.m"/-->
+        <js-module src="src/ios/PKBarcodeFormatAztecProxy.js" name="PKBarcodeFormatAztecProxy">
+            <runs />
+        </js-module>
         <source-file src="src/ios/PKBarcodeFormatAztec.swift"/>
         <dependency id="cordova-plugin-add-swift-support" version="1.6.2"/>
     </platform>
+
+    <!-- browser -->
+    <platform name="browser">
+        <config-file parent="/*" target="config.xml">
+          <feature name="PKBarcodeFormatAztec">
+            <param name="browser-package" value="PKBarcodeFormatAztec" />
+        </feature>
+        </config-file>
+        <!-- src/browser/PKBarcodeFormatAztecProxy_fake.js -->
+        <js-module src="src/browser/PKBarcodeFormatAztecProxy.js" name="PKBarcodeFormatAztecProxy">
+            <runs />
+        </js-module>
+        <!--
+        <js-module src="src/browser/freetype.js" name="freetype">
+        </js-module>
+        -->
+        <asset src="./src/browser/freetype.js" target="js/freetype.js"/>
+        <!--
+        <js-module src="./node_modules/bwip-js/freetype.js"></js-module>
+        <js-module src="./node_modules/bwip-js/bwipp.js"></js-module>
+        <js-module src="./node_modules/bwip-js/bwipjs.js"></js-module>
+        <js-module src="./node_modules/bwip-js/lib/bitmap.js"></js-module>
+        <js-module src="./node_modules/bwip-js/lib/symdesc.js"></js-module>
+        <js-module src="./node_modules/bwip-js/lib/canvas-toblob.js"></js-module>
+        <js-module src="./node_modules/bwip-js/lib/filesaver.js"></js-module>
+        -->
+    </platform>
+
 </plugin>

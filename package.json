@@ -1,0 +1,34 @@
+{
+  "name": "cordova-plugin-aztec-qrcode",
+  "version": "0.0.2",
+  "description": "Generate QRCode using Aztec format",
+  "cordova": {
+    "id": "PKBarcodeFormatAztec",
+    "platforms": [
+      "ios",
+      "browser"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bsorrentino/cordova-plugin-aztec-qrcode.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-browser"
+  ],
+  "author": "bsorrentino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bsorrentino/cordova-plugin-aztec-qrcode/issues"
+  },
+  "homepage": "https://github.com/bsorrentino/cordova-plugin-aztec-qrcode#readme",
+  "dependencies": {
+    "bwip-js": "^1.3.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1"
+  }
+}
