@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-aztec-qrcode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate QRCode using Aztec format",
   "cordova": {
     "id": "PKBarcodeFormatAztec",
