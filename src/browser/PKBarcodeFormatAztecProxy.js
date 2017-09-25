@@ -26882,13 +26882,14 @@ module.exports = function(container, message, success, error)  {
         error( "PKBarcodeFormatAztec :: element " +  element + " not found!");
         return;
     }
- 
+
     // Remove childrens
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
     */
 
+    var __symbology = container.getAttribute("symbology");
 
     var showQRCode =  function() {
 
@@ -26917,7 +26918,7 @@ module.exports = function(container, message, success, error)  {
         // well), but you will likely need to create a new Bitmap object
         // prior to each call.
         try {
-            BWIPP()(bw, 'azteccode', message, opts);
+            BWIPP()(bw, __symbology || 'azteccode', message, opts);
         } catch (e) {
             // handle error
             error( "PKBarcodeFormatAztec :: error " + e );

@@ -49,6 +49,15 @@ In HTML template create a **div** as **QRCode container**
 </div>
 
 ```
+For the _'**browser**'_ platform there is also the possibility to **customise code typology** other than just **aztec**. It will be enough to add attribute `symbology` on the container tag as shown below (the acceptable values are ones supported by [bwip-js](https://www.npmjs.com/package/bwip-js) )
+
+```html
+<div id="qrCode" #qrCode class="code" symbology="qrcode" >
+  <!-- this will contain the Image -->
+</div>
+
+```
+
 In javascript call the provided API gives a reference to container
 ```javascript
 @ViewChild('qrCode') qrCode: ElementRef; //HTMLDivElement;
